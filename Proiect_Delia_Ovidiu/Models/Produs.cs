@@ -16,6 +16,7 @@ namespace Proiect_Delia_Ovidiu.Models
         public decimal Pret { get; set; }
        
         public string Descriere { get; set; }
+
         
         public int? BrandId { get; set; }
         
