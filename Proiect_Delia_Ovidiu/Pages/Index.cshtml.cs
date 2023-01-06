@@ -23,5 +23,7 @@ namespace Proiect_Delia_Ovidiu.Pages
         {
             Produse = await _context.Produse.Include(x=>x.Brand).Include(x=>x.CategorieProdus).ThenInclude(x=>x.Categorie).ToListAsync();
         }
+
+
     }
 }

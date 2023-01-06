@@ -13,7 +13,7 @@
                 @Html.DisplayFor(modelItem => item.Nume)
             </h5>
             <div class="card-text">
-            <p>  @Html.DisplayFor(modelItem => item.Descriere)</p>
+            <p> @Html.DisplayFor(modelItem => item.Descriere)</p>
             <p> @Html.DisplayFor(modelItem => item.Brand.Nume)</p>
                 @{
                     string categorii = string.Join(", ", item.CategorieProdus.Select(x => x.Categorie.Nume));
@@ -31,14 +31,12 @@
     var elem = document.getElementsByName("addToCart");
 
     for (var i = 0; i<elem.length;i++) {
-        console.log(elem);
-        elem[i].addEventListener('click',()=> {
-            addToCart(elem[i].dataset.prodId)
+        elem[i].addEventListener('click', (event) => {
+            addToCart(event.target.dataset.prodId)
         });
     }
 
     function addToCart(prodId) {
-        console.log('salut')
         fetch(`/addToCart?prodId=${prodId}`).then().catch();
     }
 
