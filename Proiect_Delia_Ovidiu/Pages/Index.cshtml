@@ -3,44 +3,50 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-@foreach (var item in Model.Produse)
-{
-    <div class="card" style="width: 18rem;">
-       <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" /></p>
+<div class="container col-12 d-flex">
+    @foreach (var item in Model.Produse)
+    {
+        <div class="card" style="width: 18rem;margin-right:10px">
+            <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" /></p>
             <p><img id="output" width="100%" /></p>
-        <div class="card-body">
-            <h5 class="card-title">
-                @Html.DisplayFor(modelItem => item.Nume)
-            </h5>
-            <div class="card-text">
-            <p> @Html.DisplayFor(modelItem => item.Descriere)</p>
-            <p> @Html.DisplayFor(modelItem => item.Brand.Nume)</p>
-                @{
-                    string categorii = string.Join(", ", item.CategorieProdus.Select(x => x.Categorie.Nume));
+            <div class="card-body">
+                <h5 class="card-title">
+                    @Html.DisplayFor(modelItem => item.Nume)
+                </h5>
+                <div class="card-text">
+                    <p> @Html.DisplayFor(modelItem => item.Descriere)</p>
+                    <p> @Html.DisplayFor(modelItem => item.Brand.Nume)</p>
+                    @{
+                        string categorii = string.Join(", ", item.CategorieProdus.Select(x => x.Categorie.Nume));
+                    }
+                    <p> @categorii</p>
+                </div>
+                @if (User.Identity?.IsAuthenticated??false)
+                {
+                    <button name="addToCart" data-prod-id="@item.Id" class="btn btn-primary">Add To Cart</button>
                 }
-            <p> @categorii</p>
             </div>
-            <button name="addToCart" data-prod-id="@item.Id" class="btn btn-primary">Add To Cart</button>
+
         </div>
-      
-    </div>
-    
-}
+
+    }
+</div>
 
 
 <script>
 
     var elem = document.getElementsByName("addToCart");
 
-    for (var i = 0; i<elem.length;i++) {
+    for (var i = 0; i < elem.length; i++) {
         elem[i].addEventListener('click', (event) => {
             addToCart(event.target.dataset.prodId)
         });
     }
 
     function addToCart(prodId) {
-        fetch(`/addToCart?prodId=${prodId}`).then().catch();
+        $.post(`/addToCart?prodId=${prodId}`, {}, function (res) {
+            alert(`Produse in cos ${res}`)
+        });
     }
 
     var loadFile = function (event) {

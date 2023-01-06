@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect_Delia_Ovidiu.Data;
 
@@ -11,9 +12,10 @@ using Proiect_Delia_Ovidiu.Data;
 namespace Proiect_Delia_Ovidiu.Migrations
 {
     [DbContext(typeof(AutentificareMagazinContext))]
-    partial class AutentificareMagazinContextModelSnapshot : ModelSnapshot
+    [Migration("20230106160714_ChangeCosProdus")]
+    partial class ChangeCosProdus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

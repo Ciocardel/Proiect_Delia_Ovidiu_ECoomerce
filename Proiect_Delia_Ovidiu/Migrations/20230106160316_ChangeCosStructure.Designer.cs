@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect_Delia_Ovidiu.Data;
 
@@ -11,9 +12,10 @@ using Proiect_Delia_Ovidiu.Data;
 namespace Proiect_Delia_Ovidiu.Migrations
 {
     [DbContext(typeof(AutentificareMagazinContext))]
-    partial class AutentificareMagazinContextModelSnapshot : ModelSnapshot
+    [Migration("20230106160316_ChangeCosStructure")]
+    partial class ChangeCosStructure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -289,6 +291,9 @@ namespace Proiect_Delia_Ovidiu.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("Cantitate")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateCreare")
                         .HasColumnType("datetime2");
 
@@ -310,9 +315,6 @@ namespace Proiect_Delia_Ovidiu.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Cantitate")
-                        .HasColumnType("int");
 
                     b.Property<int>("CosId")
                         .HasColumnType("int");
