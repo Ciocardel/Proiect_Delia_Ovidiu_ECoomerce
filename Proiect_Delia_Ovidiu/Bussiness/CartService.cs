@@ -51,6 +51,8 @@ namespace Proiect_Delia_Ovidiu.Bussiness
             await _context.SaveChangesAsync();
         }
 
+      
+
 
         public async Task<Cos> AddCos(string userEmail)
         {
@@ -67,6 +69,8 @@ namespace Proiect_Delia_Ovidiu.Bussiness
 
             return cartToAdd;
         }
+
+      
 
     }
 }

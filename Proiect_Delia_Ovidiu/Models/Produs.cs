@@ -17,6 +17,8 @@ namespace Proiect_Delia_Ovidiu.Models
        
         public string Descriere { get; set; }
 
+       //public string ImageName { get; set; }
+
         public int? BrandId { get; set; }
         
         public Brand? Brand { get; set; }

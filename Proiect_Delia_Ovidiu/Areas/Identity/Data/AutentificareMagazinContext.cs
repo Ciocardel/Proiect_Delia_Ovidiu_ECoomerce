@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using Proiect_Delia_Ovidiu.Models;
 
 namespace Proiect_Delia_Ovidiu.Data;
@@ -46,6 +47,10 @@ public class AutentificareMagazinContext : IdentityDbContext<IdentityUser>
             x.HasKey(x => x.Id);
             x.HasMany(x => x.CosProduse).WithOne(x => x.Cos).HasForeignKey(x=>x.CosId);
         });
+
+
+        
+
 
         builder.Entity<CosProdus>(x =>
         {

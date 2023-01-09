@@ -32,6 +32,7 @@
                         <p> @Html.DisplayFor(modelItem => item.Produs.Descriere)</p>
                         <p>Cantitate: @item.Cantitate</p>
                         <p> @Html.DisplayFor(modelItem => item.Produs.Brand.Nume)</p>
+                        <p> @Html.DisplayFor(modelItem => item.Produs.Pret)</p>
                         @{
                             string categorii = string.Join(", ", item.Produs.CategorieProdus.Select(x => x.Categorie.Nume));
                         }
@@ -39,13 +40,17 @@
                     </div>
                     <button name="remove" data-prod-cos-id="@item.Id" data-cos-id="@item.CosId" class="btn btn-primary">Remove</button>
                 </div>
-
+               
             </div>
 
         }
 
     </div>
     <div>Total: @total</div>
+
+    <button name="Cumpara"  class="btn btn-dark">Cumpara</button>
+   
+
 }
 else
 {
@@ -61,6 +66,8 @@ else
 <script>
     var elem = document.getElementsByName("remove");
 
+    document.getElementsByClassName('btn-dark')[0].addEventListener('click', purchaseClicked);
+
     for (var i = 0; i < elem.length; i++) {
         elem[i].addEventListener('click', (event) => {
             addToCart(event.target.dataset.prodCosId, event.target.dataset.cosId)
@@ -74,6 +81,13 @@ else
 
     }
 
+   function purchaseClicked() {
+        alert('Multumin pentru cumparaturi')
+       
+         
+    }
+
+   
 
 </script>
 

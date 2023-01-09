@@ -16,6 +16,7 @@
                 <div class="card-text">
                     <p> @Html.DisplayFor(modelItem => item.Descriere)</p>
                     <p> @Html.DisplayFor(modelItem => item.Brand.Nume)</p>
+                    <p> @Html.DisplayFor(modelItem => item.Pret)</p>
                     @{
                         string categorii = string.Join(", ", item.CategorieProdus.Select(x => x.Categorie.Nume));
                     }
