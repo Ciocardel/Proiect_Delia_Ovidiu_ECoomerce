@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Proiect_Delia_Ovidiu.Bussiness;
 using Proiect_Delia_Ovidiu.Data;
 using Proiect_Delia_Ovidiu.Models;
 
@@ -12,11 +13,13 @@ namespace Proiect_Delia_Ovidiu.Pages.Produse
 {
     public class CreateModel : PageModel
     {
-        private readonly Proiect_Delia_Ovidiu.Data.AutentificareMagazinContext _context;
+        private readonly AutentificareMagazinContext _context;
+        private readonly ImageService _imageService;
 
-        public CreateModel(Proiect_Delia_Ovidiu.Data.AutentificareMagazinContext context)
+        public CreateModel(AutentificareMagazinContext context, ImageService imageService)
         {
             _context = context;
+            _imageService = imageService;
         }
 
         public IActionResult OnGet()
@@ -34,13 +37,19 @@ namespace Proiect_Delia_Ovidiu.Pages.Produse
         [BindProperty]
         public int CategorieId { get; set; }
 
+        [BindProperty]
+        public IFormFile Image { get; set; }
+
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
+
+            var imageName = await _imageService.SaveImage(Image.OpenReadStream());
+            Produs.ImageName = imageName;
 
             Produs.CategorieProdus.Add(new CategorieProdus()
             {

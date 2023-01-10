@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices;
 
 namespace Proiect_Delia_Ovidiu.Models
 {
@@ -20,7 +21,9 @@ namespace Proiect_Delia_Ovidiu.Models
         public int? BrandId { get; set; }
         
         public Brand? Brand { get; set; }
-        
+
+        public string ImageName { get; set; }
+
         public virtual ICollection<CategorieProdus> CategorieProdus { get; set; } = new List<CategorieProdus>();
 
         public virtual ICollection<CosProdus> CosProduse { get; set; } = new List<CosProdus>();
