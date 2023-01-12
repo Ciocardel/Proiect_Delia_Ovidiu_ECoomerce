@@ -8,10 +8,10 @@
             _hostingEnv = hostingEnvironment;
         }
 
-        public async Task<string> SaveImage(Stream stream)
+        public async Task<string> SaveImage(Stream stream, string extension)
         {
-            string imageName =  Guid.NewGuid().ToString();  
-            using var fileStream = File.Create(Path.Combine(_hostingEnv.WebRootPath,"images", imageName));
+            string imageName = Guid.NewGuid().ToString();
+            using var fileStream = File.Create(Path.Combine(_hostingEnv.WebRootPath, "images", $"{imageName}{extension}"));
             fileStream.Position = 0;
             await stream.CopyToAsync(fileStream);
             await fileStream.FlushAsync();

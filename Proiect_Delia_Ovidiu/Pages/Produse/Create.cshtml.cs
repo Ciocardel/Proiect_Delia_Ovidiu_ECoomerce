@@ -47,11 +47,12 @@ namespace Proiect_Delia_Ovidiu.Pages.Produse
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-            var imageName = await _imageService.SaveImage(Image.OpenReadStream());
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
+
+            var imageName = await _imageService.SaveImage(Image.OpenReadStream(),Path.GetExtension(Image.FileName));
             Produs.ImageName = imageName;
 
 
