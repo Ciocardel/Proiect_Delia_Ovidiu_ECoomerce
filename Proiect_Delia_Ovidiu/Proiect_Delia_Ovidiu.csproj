@@ -21,7 +21,7 @@
     <Folder Include="Data\" />
     <Folder Include="Migrations\" />
     <Folder Include="Pages\Categorii\ViewModels\" />
-    <Folder Include="wwwroot\uploads\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

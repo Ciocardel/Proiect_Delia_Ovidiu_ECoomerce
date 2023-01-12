@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddScoped<CartService>();
+builder.Services.AddScoped<ImageService>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();

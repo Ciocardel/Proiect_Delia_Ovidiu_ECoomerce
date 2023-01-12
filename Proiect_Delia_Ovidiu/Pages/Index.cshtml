@@ -7,8 +7,7 @@
     @foreach (var item in Model.Produse)
     {
         <div class="card" style="width: 18rem;margin-right:10px">
-            <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" /></p>
-            <p><img id="output" width="100%" /></p>
+            <p><img id="output" width="100%" src="/images/@item.ImageName" /></p>
             <div class="card-body">
                 <h5 class="card-title">
                     @Html.DisplayFor(modelItem => item.Nume)
@@ -49,9 +48,4 @@
             alert(`Produse in cos ${res}`)
         });
     }
-
-    var loadFile = function (event) {
-        var image = document.getElementById('output');
-        image.src = URL.createObjectURL(event.target.files[0]);
-    };
 </script>
