@@ -16,7 +16,7 @@
             await stream.CopyToAsync(fileStream);
             await fileStream.FlushAsync();
             fileStream.Close();
-            return imageName;
+            return $"{imageName}{extension}";
         }
 
     }
